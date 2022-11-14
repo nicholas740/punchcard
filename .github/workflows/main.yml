@@ -6,9 +6,18 @@ on:
 jobs:
   run:
     runs-on: ubuntu-latest
+
+    env:
+      TZ: "Asia/Jakarta"
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Set up system timezone
+        run: |
+          sudo timedatectl set-timezone ${{ env.TZ }}
+          timedatectl
 
       - name: Set up environment
         run: |
@@ -22,8 +31,6 @@ jobs:
 
       - name: Run Punchcard
         run: go run .
-        env:
-          TZ: "Asia/Jakarta"
 
       - name: Set commit message as environment variable
         run: |
