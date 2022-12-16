@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      TZ: "Asia/Jakarta"
+      TZ: "Asia/Tokyo"
 
     steps:
       - name: Checkout code
